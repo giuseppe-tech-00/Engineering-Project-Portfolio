@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="200" viewBox="0 0 800 200">
-  <rect width="800" height="200" fill="#f0ede6"/>
-  <text x="400" y="105" font-family="monospace" font-size="13" fill="#c4c4c4" text-anchor="middle">
-    ✏️  Replace with your image — place file in this folder and update src=""
-  </text>
-</svg>
