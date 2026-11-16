@@ -1,383 +1,371 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Giuseppe Marra — Engineering Portfolio</title>
-  <meta name="description" content="Engineering portfolio covering mechanical systems, robotics, aerospace, and software/AI." />
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;500;700&display=swap" rel="stylesheet" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giuseppe Cirelli — Robotics & Mechanical Engineer</title>
+<meta name="description" content="Robotics engineer building autonomous surface vessels. Portfolio of field robotics projects: ASVs, hadal underwater crawlers, tracked vehicles.">
+<style>
+:root{
+  --bg:#faf8f4; --surface:#ffffff; --line:#e3ded4;
+  --text:#16202e; --body:#3c4858; --muted:#6c7685; --accent:#0f4c5c; --accent2:#a8672a;
+  --mono:ui-monospace,"SF Mono","Cascadia Code",Consolas,monospace;
+  --sans:Inter,"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:underline;text-decoration-color:rgba(15,76,92,.3);text-underline-offset:3px}
+a:hover{text-decoration-color:var(--accent)}
+.wrap{max-width:1020px;margin:0 auto;padding:0 24px}
+.label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+
+nav{position:sticky;top:0;z-index:20;background:rgba(250,248,244,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+nav a{text-decoration:none}
+nav .brand{font-family:var(--serif);font-size:18px;color:var(--text)}
+nav .brand span{display:none}
+nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+nav ul a{color:var(--muted);font-size:14px}
+nav ul a:hover{color:var(--text)}
+
+header.hero{border-bottom:1px solid var(--line)}
+.hero .wrap{padding-top:96px;padding-bottom:64px}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,6vw,64px);line-height:1.08;margin:14px 0 22px;letter-spacing:-.01em}
+.hero p.lead{max-width:660px;font-family:var(--serif);font-size:clamp(20px,2.4vw,25px);line-height:1.45;color:var(--text);margin:0 0 16px}
+.hero p.now{max-width:640px;color:var(--body);margin:0 0 30px}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-block;padding:10px 18px;border-radius:6px;font-weight:600;font-size:14.5px;border:1px solid #cfc9bc;color:var(--text);text-decoration:none;background:transparent}
+.btn:hover{border-color:var(--text)}
+.btn.primary{background:var(--text);color:#fff;border-color:var(--text)}
+.btn.primary:hover{background:var(--accent);border-color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:64px;padding-top:24px;border-top:1px solid var(--line)}
+.stat span{display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:4px}
+.stat b{display:block;font-weight:500;font-size:15px;color:var(--text);line-height:1.45}
+
+section{padding:80px 0;border-bottom:1px solid var(--line)}
+section h2{font-family:var(--serif);font-weight:500;font-size:clamp(28px,3.6vw,38px);margin:8px 0 12px;letter-spacing:-.01em}
+section .sub{color:var(--body);max-width:620px;margin:0 0 44px}
+
+.project{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;padding:40px 0;border-top:1px solid var(--line)}
+.project:first-of-type{border-top:0;padding-top:0}
+.project:nth-of-type(even) .media{order:2}
+.project h3{font-family:var(--serif);font-weight:500;font-size:25px;margin:8px 0 4px;line-height:1.25}
+.project .meta{font-size:13.5px;color:var(--muted);margin-bottom:14px}
+.project p{color:var(--body);margin:0 0 12px}
+.project ul{margin:0 0 14px;padding-left:18px;color:var(--body)}
+.project li{margin-bottom:6px}
+.project .team{font-size:14px;color:var(--muted);font-style:italic;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12px;padding:3px 10px;border:1px solid var(--line);border-radius:999px;color:var(--body);background:var(--surface)}
+.media .main{aspect-ratio:16/9;border-radius:6px;overflow:hidden;border:1px solid var(--line);background:var(--surface);position:relative}
+.media .main img,.media .main video,.media .main iframe{width:100%;height:100%;object-fit:cover;border:0;display:block}
+.media .main img{cursor:zoom-in}
+.thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:8px}
+.thumb{aspect-ratio:16/10;border-radius:4px;border:1px solid var(--line);background:var(--surface);overflow:hidden;cursor:pointer;padding:0;color:inherit;font:inherit;position:relative;opacity:.75}
+.thumb.active{border-color:var(--text);opacity:1}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.caption{font-size:13px;color:var(--muted);margin-top:8px;min-height:20px}
+.ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:14px;
+  background:repeating-linear-gradient(135deg,transparent 0 14px,rgba(22,32,46,.025) 14px 28px)}
+.ph svg{width:28px;height:28px;stroke:var(--accent2);fill:none;stroke-width:1.5}
+.ph b{font-size:11px;letter-spacing:.12em;color:var(--accent2);text-transform:uppercase}
+.ph span{font-size:13px;color:var(--muted);max-width:320px}
+.thumb .ph{gap:2px;padding:4px}.thumb .ph svg{width:18px;height:18px}.thumb .ph span,.thumb .ph b{display:none}
+
+.timeline{position:relative;margin-left:6px;padding-left:28px;border-left:1px solid var(--line)}
+.tl{position:relative;padding-bottom:30px}
+.tl::before{content:"";position:absolute;left:-32.5px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--bg);border:1.5px solid var(--text)}
+.tl .when{font-size:13px;color:var(--muted)}
+.tl h4{margin:2px 0 2px;font-size:17px;font-weight:600}
+.tl .where{color:var(--accent);font-size:14px}
+.tl p{margin:6px 0 0;color:var(--body);font-size:15px;max-width:720px}
+.cols{display:grid;grid-template-columns:1.4fr 1fr;gap:56px}
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:22px}
+.card h4{margin:0 0 10px;font-size:15px;font-weight:600}
+.pub{display:flex;gap:18px;padding:18px 0;border-top:1px solid var(--line)}
+.pub:first-child{border-top:0}
+.pub .st{font-size:11px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;padding:3px 10px;border-radius:999px;height:fit-content;border:1px solid var(--line);color:var(--muted);min-width:112px;text-align:center}
+.pub .st.ok{color:var(--accent);border-color:var(--accent)}
+.pub b{display:block;font-family:var(--serif);font-weight:500;font-size:18px;line-height:1.35}
+.pub span{color:var(--muted);font-size:14px}
+
+footer{padding:76px 0 56px}
+footer h2{font-family:var(--serif);font-weight:500;font-size:clamp(28px,4vw,40px);margin:10px 0 12px}
+footer p{color:var(--body);margin:0 0 24px;max-width:560px}
+footer small{display:block;margin-top:56px;color:var(--muted);font-size:12.5px}
+
+#lb{position:fixed;inset:0;background:rgba(22,32,46,.92);display:none;align-items:center;justify-content:center;z-index:50;padding:24px;cursor:zoom-out}
+#lb.open{display:flex}
+#lb img{max-width:100%;max-height:100%;border-radius:4px}
+
+@media (max-width:860px){
+  nav ul{display:none}
+  .project,.cols{grid-template-columns:1fr;gap:22px}
+  .project:nth-of-type(even) .media{order:0}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .grid3{grid-template-columns:1fr}
+  section{padding:56px 0}
+}
+</style>
 </head>
 <body>
 
-  <!-- ===================== NAV ===================== -->
-  <nav id="navbar">
-    <div class="nav-inner">
-      <a href="#" class="logo">Giuseppe Marra</a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#publications">Research</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <a href="#contact" class="nav-btn">Get in touch</a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+<nav><div class="wrap">
+  <a class="brand" href="#top">Giuseppe Cirelli<span>.</span></a>
+  <ul>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+  <div class="label">Robotics &amp; Mechanical Engineer</div>
+  <h1>Giuseppe Cirelli</h1>
+  <p class="lead">I build and test robots for places that are hard to reach: the open sea, the deep ocean floor, rough terrain.</p>
+  <p class="now">I work across the whole path from CAD to field trials, and I have been lucky to learn it inside strong teams, at Mirai Robotics, JAMSTEC and Leonardo. This page collects what I worked on, with photos and footage where I can share them.</p>
+  <div class="cta">
+    <a class="btn primary" href="#projects">Selected work</a>
+    <a class="btn" href="assets/Giuseppe_Cirelli_CV.pdf">CV (PDF)</a>
+    <a class="btn" href="https://www.linkedin.com/in/giuseppe-cirelli" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><span>Currently</span><b>Robotics Engineer, Mirai Robotics. Autonomous surface vessels.</b></div>
+    <div class="stat"><span>Previously</span><b>JAMSTEC (Japan), Leonardo S.p.A., Polytechnic University of Bari</b></div>
+    <div class="stat"><span>Published</span><b>IEEE OCEANS 2025 Great Lakes</b></div>
+    <div class="stat"><span>Based in</span><b>Bari, Italy. Open to relocation.</b></div>
+  </div>
+</div></header>
+
+<section id="projects"><div class="wrap">
+  <div class="label">01 — Projects</div>
+  <h2>Selected work</h2>
+  <p class="sub">For each project: what the goal was, what my part in it was, and who I worked with.</p>
+  <div id="project-list"></div>
+</div></section>
+
+<section id="experience"><div class="wrap">
+  <div class="label">02 — Path</div>
+  <h2>Experience &amp; education</h2>
+  <div class="cols" style="margin-top:36px">
+    <div class="timeline">
+      <div class="tl"><div class="when">Sep 2026 — Present</div><h4>Robotics Engineer</h4><div class="where">Mirai Robotics · Bari, Italy</div><p>Venture-backed maritime autonomy company. Mechanical prototyping, electrical/electronic integration with ROS2, subsystem validation and full-vessel sea trials on ASVs.</p></div>
+      <div class="tl"><div class="when">Oct 2025 — Jul 2026</div><h4>Aerotech Academy, Postgraduate Master</h4><div class="where">Leonardo S.p.A. · Grottaglie, Italy</div><p>New contactless inspection methodology for aeronautical structures, combining mid-air ultrasonic haptic arrays with machine learning.</p></div>
+      <div class="tl"><div class="when">Mar 2025 — Aug 2025</div><h4>Visiting Research Engineer</h4><div class="where">JAMSTEC · Yokosuka, Japan</div><p>Autonomous navigation system for the "Piccolo" hadal crawler; field tests in Shimoda and deep-water visual tracking trials with Osaka University.</p></div>
+      <div class="tl"><div class="when">Nov 2024 — Oct 2025</div><h4>Research Engineer</h4><div class="where">Robotic Mobility Lab, Polytechnic University of Bari</div><p>ROS environment, SLAM, suspension and terrain-perception algorithms for the Polibot tracked vehicle; multibody simulation in MSC Adams.</p></div>
+      <div class="tl" style="padding-bottom:0"><div class="when">Aug 2024 — Oct 2024</div><h4>Mechanical Engineer</h4><div class="where">Omnigrasp · Bari, Italy</div><p>Capacitive sensing circuit for electroadhesive devices (HARTU project).</p></div>
     </div>
-  </nav>
-
-  <!-- ===================== HERO ===================== -->
-  <header class="hero" id="home">
-    <div class="hero-text">
-      <p class="hero-label">// Engineer &amp; Researcher</p>
-      <h1 class="hero-title">Systems thinking,<br><em>built from first&nbsp;principles</em></h1>
-      <p class="hero-sub">Working at the intersection of mechanical systems, robotics, software, and aerospace — designing things that move, sense, and decide.</p>
-      <div class="hero-cta">
-        <a href="#projects" class="btn-primary">View Projects</a>
-        <a href="#publications" class="btn-secondary">Research</a>
-      </div>
+    <div>
+      <div class="card" style="margin-bottom:16px"><h4>M.Sc. Mechanical Engineering</h4><div class="where" style="color:var(--accent);font-size:14px">Mechatronics &amp; Robotics · Polytechnic University of Bari</div><p style="margin:8px 0 0;color:var(--muted);font-size:14px">2023 — 2025 · 110/110 cum laude<br>Thesis: Autonomous navigation for underwater crawler vehicle</p></div>
+      <div class="card" style="margin-bottom:16px"><h4>Postgraduate Master, Aerotech Academy</h4><div style="color:var(--accent);font-size:14px">Aeronautical Design and Production · Leonardo S.p.A.</div><p style="margin:8px 0 0;color:var(--muted);font-size:14px">2025 — 2026</p></div>
+      <div class="card"><h4>B.Sc. Mechanical Engineering</h4><div style="color:var(--accent);font-size:14px">Industrial · Polytechnic University of Bari</div><p style="margin:8px 0 0;color:var(--muted);font-size:14px">2019 — 2023 · 94/110<br>Thesis: Design and FEM analysis of Aptilla AC40 foiling system</p></div>
     </div>
-    <div class="hero-visual" aria-hidden="true">
-      <div class="orbit orbit-1"><div class="orbit-dot"></div></div>
-      <div class="orbit orbit-2"><div class="orbit-dot orbit-dot-sm"></div></div>
-      <div class="center-badge">Mech<br>/ AI<br>/ Space</div>
-      <span class="float-tag ft1">Robotics &amp; Control</span>
-      <span class="float-tag ft2">Aerospace Systems</span>
-      <span class="float-tag ft3">Mechanical Design</span>
-      <span class="float-tag ft4">Software / AI</span>
+  </div>
+</div></section>
+
+<section id="publications"><div class="wrap">
+  <div class="label">03 — Research</div>
+  <h2>Publications</h2>
+  <div style="margin-top:28px">
+    <div class="pub"><div class="st ok">Published</div><div><b>Autonomous Navigation of Crawler Vehicle in Sensor-Constrained Environment</b><span>IEEE OCEANS 2025 Great Lakes · <a href="#">IEEE Xplore ↗</a></span></div></div>
+    <div class="pub"><div class="st">In review</div><div><b>Toward Autonomous Hadal Exploration: Cooperative Vision-Based Navigation for an Underwater Crawler</b><span>Under review</span></div></div>
+    <div class="pub"><div class="st">In preparation</div><div><b>Contactless Structural Health Monitoring of Aerospace Structures Using Airborne Ultrasonic Phased Arrays</b><span>Joint paper with Leonardo S.p.A.</span></div></div>
+  </div>
+</div></section>
+
+<section id="skills"><div class="wrap">
+  <div class="label">04 — Toolbox</div>
+  <h2>Skills</h2>
+  <div class="grid3" style="margin-top:28px">
+    <div class="card"><h4>Robotics &amp; Autonomy</h4><div class="chips"><span class="chip">ROS / ROS2</span><span class="chip">Gazebo</span><span class="chip">ArduPilot</span><span class="chip">MAVROS</span><span class="chip">BlueOS</span><span class="chip">SLAM</span><span class="chip">EKF sensor fusion</span><span class="chip">Vision-based navigation</span><span class="chip">PID control</span></div></div>
+    <div class="card"><h4>Hardware &amp; Electronics</h4><div class="chips"><span class="chip">Sensor integration</span><span class="chip">Circuit design &amp; test</span><span class="chip">Raspberry Pi</span><span class="chip">Arduino</span><span class="chip">Oscilloscope</span><span class="chip">DAQ</span><span class="chip">Commissioning</span></div></div>
+    <div class="card"><h4>Mechanical Design</h4><div class="chips"><span class="chip">Fusion 360</span><span class="chip">SolidWorks</span><span class="chip">Inventor</span><span class="chip">3D printing (FFF, resin)</span><span class="chip">Laser cutting</span><span class="chip">Technical drawings</span></div></div>
+    <div class="card"><h4>Simulation</h4><div class="chips"><span class="chip">MSC Adams</span><span class="chip">COMSOL</span><span class="chip">FEM / FEA</span><span class="chip">MATLAB</span><span class="chip">Simulink</span></div></div>
+    <div class="card"><h4>Software &amp; AI</h4><div class="chips"><span class="chip">Python</span><span class="chip">C</span><span class="chip">Linux</span><span class="chip">Machine learning</span><span class="chip">Neural networks</span></div></div>
+    <div class="card"><h4>Field Operations</h4><div class="chips"><span class="chip">Sea trials</span><span class="chip">Underwater testing</span><span class="chip">Test &amp; validation</span><span class="chip">Troubleshooting</span></div></div>
+  </div>
+</div></section>
+
+<footer id="contact"><div class="wrap">
+  <div class="label">05 — Contact</div>
+  <h2>Get in touch</h2>
+  <p>I am always glad to talk about field robotics, or to hear where I got something wrong. Based in Bari, Italy; EU citizen, open to relocation.</p>
+  <div class="cta">
+    <a class="btn primary" href="mailto:giuseppecirelli00@gmail.com">giuseppecirelli00@gmail.com</a>
+    <a class="btn" href="https://www.linkedin.com/in/giuseppe-cirelli" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+  <small>© 2026 Giuseppe Cirelli</small>
+</div></footer>
+
+<div id="lb"><img alt=""></div>
+
+<script>
+/* ============================================================
+   PROJECTS — edit only this block to add photos and videos.
+   media item:
+   team: optional line crediting the people you worked with.
+     { type:"image",   src:"assets/asv/trial-01.jpg",  caption:"..." }
+     { type:"video",   src:"assets/asv/trial.mp4", poster:"assets/asv/trial.jpg", caption:"..." }
+     { type:"youtube", src:"VIDEO_ID", caption:"..." }
+   Leave src empty ("") to show a placeholder with the "todo" hint.
+   ============================================================ */
+const PROJECTS = [
+  {
+    tag:"Maritime autonomy", title:"Autonomous Surface Vessels",
+    meta:"Mirai Robotics · Sep 2026 — Present",
+    text:"Prototype ASVs for AI-driven maritime autonomy, including 4-meter boats and jet-ski-based platforms.",
+    bullets:[
+      "Rapid prototyping of mechanical components in Fusion 360",
+      "Integration and commissioning of sensors, actuators and onboard electronics with ROS2",
+      "Subsystem testing and troubleshooting in lab and workshop before deployment",
+      "Full-vessel sea trials to validate autonomous navigation, feeding results back to software and mechanical teams"
+    ],
+    tech:["ROS2","Fusion 360","Hardware integration","Sea trials"],
+    team:"Built together with Mirai's software and mechanical teams.",
+    media:[
+      {type:"video",src:"",todo:"Video 30–60 s: sea trial in navigazione autonoma (previa approvazione Mirai)"},
+      {type:"image",src:"",todo:"Foto: vessel in acqua"},
+      {type:"image",src:"",todo:"Foto: cablaggio / elettronica di bordo"},
+      {type:"image",src:"",todo:"Render CAD di un componente tuo"},
+      {type:"image",src:"",todo:"Foto: tu in officina / in barca"}
+    ]
+  },
+  {
+    tag:"Underwater robotics", title:"\"Piccolo\" — navigation for a hadal crawler",
+    meta:"JAMSTEC, Japan · Mar — Aug 2025",
+    text:"Autonomous navigation system for a tracked underwater crawler designed for hadal depths (Mariana Trench, ~11,000 m).",
+    bullets:[
+      "Navigation stack with ROS2, MAVROS and ArduPilot on Raspberry Pi with BlueOS, developed in Gazebo",
+      "Multi-sensor fusion with an Extended Kalman Filter for state estimation under limited sensing",
+      "Shallow-water field tests (Shimoda) and deep-water AI-based visual tracking trials with Osaka University",
+      "Results published at IEEE OCEANS 2025 Great Lakes"
+    ],
+    tech:["ROS2","Gazebo","MAVROS","ArduPilot","BlueOS","EKF"],
+    team:"Part of an interdisciplinary international team at JAMSTEC, with Osaka University.",
+    media:[
+      {type:"video",src:"",todo:"Video: crawler in vasca o in mare a Shimoda"},
+      {type:"image",src:"",todo:"Foto: Piccolo sul ponte / in laboratorio"},
+      {type:"image",src:"",todo:"Screenshot: simulazione Gazebo"},
+      {type:"image",src:"",todo:"Grafico: stima EKF vs ground truth (dal paper)"},
+      {type:"image",src:"",todo:"Foto: team internazionale"}
+    ]
+  },
+  {
+    tag:"Aerospace NDI", title:"Contactless structural health monitoring",
+    meta:"Leonardo S.p.A. Aerotech Academy · Oct 2025 — Jul 2026",
+    text:"A new contactless inspection methodology for aeronautical structural components.",
+    bullets:[
+      "Mid-air ultrasonic haptic arrays combined with machine learning",
+      "Applied to structural health monitoring (SHM) and non-destructive inspection (NDI)",
+      "Joint paper in preparation"
+    ],
+    tech:["Ultrasonic phased arrays","Machine learning","SHM","NDI"],
+    team:"Joint work within Leonardo's Aerotech Academy.",
+    media:[
+      {type:"image",src:"",todo:"Foto: setup sperimentale (solo se autorizzato da Leonardo)"},
+      {type:"image",src:"",todo:"Schema del metodo"},
+      {type:"image",src:"",todo:"Grafico: risultato di classificazione"}
+    ]
+  },
+  {
+    tag:"Ground robotics", title:"Polibot tracked vehicle",
+    meta:"Robotic Mobility Lab, Polytechnic University of Bari · Nov 2024 — Oct 2025",
+    text:"Perception and mobility for a tracked ground robot.",
+    bullets:[
+      "ROS environment enabling SLAM-based mapping and localization",
+      "Suspension and terrain-perception algorithms; neural network for terrain classification from IMU data",
+      "Multibody simulation in MSC Adams; designed and 3D-printed SNAP vehicle parts, including an optimized encoder"
+    ],
+    tech:["ROS","SLAM","Neural networks","MSC Adams","3D printing"],
+    team:"Carried out within the Robotic Mobility Lab.",
+    media:[
+      {type:"video",src:"",todo:"Video: Polibot su terreno sconnesso"},
+      {type:"image",src:"",todo:"Screenshot: mappa SLAM"},
+      {type:"image",src:"",todo:"Foto: parti SNAP stampate in 3D"},
+      {type:"image",src:"",todo:"Screenshot: modello MSC Adams"}
+    ]
+  },
+  {
+    tag:"Electronics", title:"Capacitive sensing for electroadhesion (HARTU)",
+    meta:"Omnigrasp · Aug — Oct 2024",
+    text:"Sensing circuit for electroadhesive gripping devices.",
+    bullets:[
+      "Designed and tested a capacitive sensing circuit with high/low-voltage supplies and digital oscilloscopes",
+      "Prototyped with resin 3D printing, laser cutting and CAD"
+    ],
+    tech:["Circuit design","Oscilloscope","Resin 3D printing","Laser cutting"],
+    media:[
+      {type:"image",src:"",todo:"Foto: circuito / banco prova"},
+      {type:"image",src:"",todo:"Schermata oscilloscopio"}
+    ]
+  }
+];
+
+const ICON = {
+  image:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/></svg>',
+  video:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9.2v5.6l5-2.8z"/></svg>'
+};
+ICON.youtube = ICON.video;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function mainHTML(m){
+  if(!m.src) return `<div class="ph">${ICON[m.type]}<b>${m.type === 'image' ? 'Photo slot' : 'Video slot'}</b><span>${esc(m.todo||'')}</span></div>`;
+  if(m.type === 'image') return `<img src="${esc(m.src)}" alt="${esc(m.caption||'')}" loading="lazy">`;
+  if(m.type === 'video') return `<video src="${esc(m.src)}" ${m.poster?`poster="${esc(m.poster)}"`:''} controls preload="none" playsinline></video>`;
+  return `<iframe src="https://www.youtube-nocookie.com/embed/${esc(m.src)}" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy" title="${esc(m.caption||'video')}"></iframe>`;
+}
+function thumbHTML(m,i,active){
+  let inner = `<div class="ph">${ICON[m.type]}</div>`;
+  if(m.src && m.type === 'image') inner = `<img src="${esc(m.src)}" alt="" loading="lazy">`;
+  else if(m.src && m.type === 'video' && m.poster) inner = `<img src="${esc(m.poster)}" alt="" loading="lazy">`;
+  else if(m.src && m.type === 'youtube') inner = `<img src="https://i.ytimg.com/vi/${esc(m.src)}/mqdefault.jpg" alt="" loading="lazy">`;
+  return `<button class="thumb${active?' active':''}" data-i="${i}" aria-label="Show media ${i+1}">${inner}</button>`;
+}
+
+const list = document.getElementById('project-list');
+PROJECTS.forEach(p => {
+  const el = document.createElement('article');
+  el.className = 'project';
+  el.innerHTML = `
+    <div class="media">
+      <div class="main"></div>
+      ${p.media.length > 1 ? `<div class="thumbs">${p.media.map((m,i)=>thumbHTML(m,i,i===0)).join('')}</div>` : ''}
+      <div class="caption"></div>
     </div>
-  </header>
+    <div>
+      <div class="label">${esc(p.tag)}</div>
+      <h3>${esc(p.title)}</h3>
+      <div class="meta">${esc(p.meta)}</div>
+      <p>${esc(p.text)}</p>
+      <ul>${p.bullets.map(b=>`<li>${esc(b)}</li>`).join('')}</ul>
+      ${p.team?`<p class="team">${esc(p.team)}</p>`:''}
+      <div class="chips">${p.tech.map(t=>`<span class="chip">${esc(t)}</span>`).join('')}</div>
+    </div>`;
+  const main = el.querySelector('.main'), cap = el.querySelector('.caption');
+  const show = i => {
+    const m = p.media[i];
+    main.innerHTML = mainHTML(m);
+    cap.textContent = m.src ? (m.caption||'') : '';
+    el.querySelectorAll('.thumb').forEach((t,j)=>t.classList.toggle('active', j===i));
+  };
+  el.querySelectorAll('.thumb').forEach(t => t.addEventListener('click', () => show(+t.dataset.i)));
+  show(0);
+  list.appendChild(el);
+});
 
-  <!-- ===================== ABOUT ===================== -->
-  <section id="about" class="section">
-    <div class="section-header">
-      <span class="section-num">01</span>
-      <h2 class="section-title">About me</h2>
-      <div class="divider"></div>
-    </div>
-    <div class="about-grid">
-      <div class="about-text">
-        <!--
-          ✏️  EDIT: Update this bio with your own text.
-        -->
-        <p>I'm an engineer with years of experience building systems that bridge hardware and software — from mechanical assemblies and embedded control loops to AI-driven decision pipelines and space-grade structures.</p>
-        <p>My work lives at the intersection of multiple disciplines. I believe the most interesting engineering problems are the ones that don't fit neatly into a single field. I've worked on autonomous systems, structural mechanics, simulation environments, and more — often all within the same project.</p>
-        <p>This portfolio is a living record of that journey: the prototypes, the papers, the late-night debugging sessions, and the collaborators who made it all possible.</p>
-        <div class="field-tags">
-          <!--
-            ✏️  EDIT: Add/remove tags to match your focus areas.
-          -->
-          <span class="field-tag">Mechanical Engineering</span>
-          <span class="field-tag">Robotics &amp; Control</span>
-          <span class="field-tag">Software / AI</span>
-          <span class="field-tag">Aerospace / Space</span>
-        </div>
-      </div>
-      <div class="about-stats">
-        <!--
-          ✏️  EDIT: Update these numbers to reflect your experience.
-        -->
-        <div class="stat-card"><div class="stat-num">4+</div><div class="stat-label">Years of projects</div></div>
-        <div class="stat-card"><div class="stat-num">12+</div><div class="stat-label">Projects completed</div></div>
-        <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Publications</div></div>
-        <div class="stat-card"><div class="stat-num">∞</div><div class="stat-label">Things to build</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== PROJECTS ===================== -->
-  <section id="projects" class="section">
-    <div class="section-header">
-      <span class="section-num">02</span>
-      <h2 class="section-title">Projects</h2>
-      <div class="divider"></div>
-    </div>
-
-    <div class="filter-bar">
-      <!--
-        ✏️  EDIT: Add more filter buttons if you add new categories.
-        Each button's data-filter must match a folder card's data-category.
-      -->
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="robotics">Robotics</button>
-      <button class="filter-btn" data-filter="aerospace">Aerospace</button>
-      <button class="filter-btn" data-filter="software">Software / AI</button>
-      <button class="filter-btn" data-filter="mechanical">Mechanical</button>
-    </div>
-
-    <div class="projects-grid" id="projects-grid">
-
-      <!--
-        ✏️  HOW TO ADD A PROJECT:
-        1. Duplicate one of the <article> blocks below.
-        2. Set data-category to one of: robotics | aerospace | software | mechanical
-        3. Update the folder-category, folder-name, folder-desc, and tags.
-        4. Update the folder-footer file/doc count.
-        5. Set href on the "Open folder" link to the project's folder page, e.g. projects/robotics/agv.html
-        6. Place any documents, images, or videos inside the matching projects/ subfolder.
-      -->
-
-      <article class="folder-card" data-category="robotics">
-        <div class="folder-top" style="background:#1a1a1a"></div>
-        <div class="folder-content">
-          <div class="folder-icon" aria-hidden="true"></div>
-          <p class="folder-category">Robotics &amp; Control</p>
-          <h3 class="folder-name">Autonomous Ground Vehicle</h3>
-          <p class="folder-desc">Control architecture for an autonomous ground vehicle. Includes sensor fusion, path planning algorithms, and PID/LQR control loops validated in simulation and hardware.</p>
-          <div class="folder-tags">
-            <span class="tag">ROS</span>
-            <span class="tag">C++</span>
-            <span class="tag">Python</span>
-            <span class="tag">LQR</span>
-            <span class="tag">SLAM</span>
-          </div>
-        </div>
-        <div class="folder-footer">
-          <span class="folder-files">6 docs · 3 videos</span>
-          <a href="projects/robotics/index.html" class="folder-link">Open folder →</a>
-        </div>
-      </article>
-
-      <article class="folder-card" data-category="aerospace">
-        <div class="folder-top" style="background:#555"></div>
-        <div class="folder-content">
-          <div class="folder-icon" aria-hidden="true"></div>
-          <p class="folder-category">Aerospace / Space</p>
-          <h3 class="folder-name">CubeSat Structural Analysis</h3>
-          <p class="folder-desc">Structural design and FEM analysis of a 3U CubeSat frame. Vibration testing, thermal modeling, and margin verification for launch loads per ECSS standards.</p>
-          <div class="folder-tags">
-            <span class="tag">ANSYS</span>
-            <span class="tag">FEM</span>
-            <span class="tag">MATLAB</span>
-            <span class="tag">ECSS</span>
-          </div>
-        </div>
-        <div class="folder-footer">
-          <span class="folder-files">9 docs · 2 diagrams</span>
-          <a href="projects/aerospace/index.html" class="folder-link">Open folder →</a>
-        </div>
-      </article>
-
-      <article class="folder-card" data-category="software">
-        <div class="folder-top" style="background:#888"></div>
-        <div class="folder-content">
-          <div class="folder-icon" aria-hidden="true"></div>
-          <p class="folder-category">Software / AI</p>
-          <h3 class="folder-name">Reinforcement Learning for Control</h3>
-          <p class="folder-desc">Training RL agents to replace classical controllers in nonlinear dynamic systems. Sim-to-real transfer experiments and stability analysis on physical hardware.</p>
-          <div class="folder-tags">
-            <span class="tag">PyTorch</span>
-            <span class="tag">OpenAI Gym</span>
-            <span class="tag">PPO</span>
-            <span class="tag">SAC</span>
-          </div>
-        </div>
-        <div class="folder-footer">
-          <span class="folder-files">5 docs · 4 notebooks</span>
-          <a href="projects/software-ai/index.html" class="folder-link">Open folder →</a>
-        </div>
-      </article>
-
-      <article class="folder-card" data-category="mechanical">
-        <div class="folder-top" style="background:#aaa"></div>
-        <div class="folder-content">
-          <div class="folder-icon" aria-hidden="true"></div>
-          <p class="folder-category">Mechanical Design</p>
-          <h3 class="folder-name">Compliant Actuator Mechanism</h3>
-          <p class="folder-desc">Design and prototyping of a compliant actuator mechanism for robotic joints. Topology optimization, DFM analysis, and bench testing of the manufactured prototype.</p>
-          <div class="folder-tags">
-            <span class="tag">SolidWorks</span>
-            <span class="tag">GD&amp;T</span>
-            <span class="tag">Topology Opt.</span>
-            <span class="tag">3D Print</span>
-          </div>
-        </div>
-        <div class="folder-footer">
-          <span class="folder-files">8 docs · CAD files</span>
-          <a href="projects/mechanical/index.html" class="folder-link">Open folder →</a>
-        </div>
-      </article>
-
-    </div><!-- /projects-grid -->
-  </section>
-
-  <!-- ===================== SKILLS ===================== -->
-  <section id="skills" class="section">
-    <div class="section-header">
-      <span class="section-num">03</span>
-      <h2 class="section-title">Skills &amp; tools</h2>
-      <div class="divider"></div>
-    </div>
-    <div class="skills-grid">
-      <!--
-        ✏️  EDIT: Add/remove skills inside each block, or add entirely new skill blocks.
-      -->
-      <div class="skill-block">
-        <p class="skill-domain">Mechanical</p>
-        <ul class="skill-list">
-          <li>SolidWorks / CATIA</li>
-          <li>FEM / FEA (ANSYS)</li>
-          <li>GD&amp;T / DFM</li>
-          <li>Structural analysis</li>
-          <li>Rapid prototyping</li>
-        </ul>
-      </div>
-      <div class="skill-block">
-        <p class="skill-domain">Robotics &amp; Control</p>
-        <ul class="skill-list">
-          <li>ROS / ROS2</li>
-          <li>Control theory (PID, LQR, MPC)</li>
-          <li>Sensor fusion</li>
-          <li>SLAM</li>
-          <li>Path planning</li>
-        </ul>
-      </div>
-      <div class="skill-block">
-        <p class="skill-domain">Software / AI</p>
-        <ul class="skill-list">
-          <li>Python / C++</li>
-          <li>PyTorch / TensorFlow</li>
-          <li>Reinforcement Learning</li>
-          <li>MATLAB / Simulink</li>
-          <li>Git / Docker</li>
-        </ul>
-      </div>
-      <div class="skill-block">
-        <p class="skill-domain">Aerospace</p>
-        <ul class="skill-list">
-          <li>Orbital mechanics</li>
-          <li>ECSS standards</li>
-          <li>Thermal modeling</li>
-          <li>Launch load analysis</li>
-          <li>Systems engineering</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== PUBLICATIONS ===================== -->
-  <section id="publications" class="section">
-    <div class="section-header">
-      <span class="section-num">04</span>
-      <h2 class="section-title">Publications &amp; thesis</h2>
-      <div class="divider"></div>
-    </div>
-    <div class="pub-list">
-      <!--
-        ✏️  HOW TO ADD A PUBLICATION:
-        1. Duplicate one <article class="pub-item"> block.
-        2. Fill in the year, title, venue, abstract.
-        3. If you have a PDF in publications/, update the href on the download link.
-        4. Remove the download link if there is no file yet.
-      -->
-      <article class="pub-item">
-        <div class="pub-meta">
-          <span class="pub-year">2024</span>
-          <span class="pub-type">Thesis</span>
-        </div>
-        <div class="pub-body">
-          <h3 class="pub-title">Your thesis title — replace this</h3>
-          <p class="pub-venue">Master's Thesis · University Name</p>
-          <p class="pub-abstract">A brief description of your thesis — the problem you addressed, the approach you took, and the key results. Keep it accessible to non-specialists.</p>
-          <a href="publications/thesis.pdf" class="pub-link" target="_blank">↓ Download PDF</a>
-        </div>
-      </article>
-
-      <article class="pub-item">
-        <div class="pub-meta">
-          <span class="pub-year">2023</span>
-          <span class="pub-type">Conference</span>
-        </div>
-        <div class="pub-body">
-          <h3 class="pub-title">Your conference paper title — replace this</h3>
-          <p class="pub-venue">Conference Name · City, Year</p>
-          <p class="pub-abstract">Summary of the contribution. What gap did you address? What was the method? What were the findings?</p>
-          <a href="publications/paper-2023.pdf" class="pub-link" target="_blank">↓ Download PDF</a>
-        </div>
-      </article>
-
-      <article class="pub-item">
-        <div class="pub-meta">
-          <span class="pub-year">2022</span>
-          <span class="pub-type">Journal</span>
-        </div>
-        <div class="pub-body">
-          <h3 class="pub-title">Another publication title — replace this</h3>
-          <p class="pub-venue">Journal Name · DOI: 10.xxxx/xxxxx</p>
-          <p class="pub-abstract">Brief abstract or summary of the work. You can also link to the journal page instead of a PDF.</p>
-          <a href="#" class="pub-link" target="_blank">↗ View online</a>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ===================== CONTACT ===================== -->
-  <section id="contact" class="section">
-    <div class="section-header">
-      <span class="section-num">05</span>
-      <h2 class="section-title">Contact</h2>
-      <div class="divider"></div>
-    </div>
-    <div class="contact-grid">
-      <div class="contact-left">
-        <p class="contact-headline">Let's build something interesting together.</p>
-        <p class="contact-sub">Whether it's a collaboration, a research opportunity, or just a conversation about engineering — I'm always open to hearing from people who care about building things well.</p>
-        <div class="contact-links">
-          <!--
-            ✏️  EDIT: Replace href values and displayed text with your real links.
-          -->
-          <a href="https://github.com/giuseppe-tech-00" target="_blank" class="contact-link">
-            <span class="cl-label">GitHub</span>
-            <span class="cl-value">github.com/giuseppe-tech-00</span>
-          </a>
-          <a href="mailto:your@email.com" class="contact-link">
-            <span class="cl-label">Email</span>
-            <span class="cl-value">your@email.com</span>
-          </a>
-          <a href="https://linkedin.com/in/your-profile" target="_blank" class="contact-link">
-            <span class="cl-label">LinkedIn</span>
-            <span class="cl-value">linkedin.com/in/your-profile</span>
-          </a>
-        </div>
-      </div>
-      <div class="contact-right">
-        <!--
-          Note: GitHub Pages is static — this form uses Formspree for free email delivery.
-          Replace YOUR_FORM_ID with your Formspree form ID from https://formspree.io
-          Or remove the <form> entirely if you prefer contact by email only.
-        -->
-        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-          <div class="form-field">
-            <label class="form-label" for="name">Name</label>
-            <input class="form-input" type="text" id="name" name="name" placeholder="Your name" required />
-          </div>
-          <div class="form-field">
-            <label class="form-label" for="email">Email</label>
-            <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required />
-          </div>
-          <div class="form-field">
-            <label class="form-label" for="message">Message</label>
-            <textarea class="form-input" id="message" name="message" rows="4" placeholder="What would you like to discuss?" required></textarea>
-          </div>
-          <button type="submit" class="btn-primary">Send message</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== FOOTER ===================== -->
-  <footer>
-    <div class="footer-inner">
-      <span class="footer-logo">Giuseppe Marra</span>
-      <span class="footer-note">Engineering Portfolio · 2025</span>
-    </div>
-  </footer>
-
-  <script src="assets/js/main.js"></script>
+/* lightbox */
+const lb = document.getElementById('lb');
+document.addEventListener('click', e => {
+  if(e.target.matches('.media .main img')){ lb.querySelector('img').src = e.target.src; lb.classList.add('open'); }
+  else if(lb.classList.contains('open')) lb.classList.remove('open');
+});
+document.addEventListener('keydown', e => { if(e.key === 'Escape') lb.classList.remove('open'); });
+</script>
 </body>
 </html>
